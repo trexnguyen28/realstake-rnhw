@@ -10,7 +10,7 @@ To make it easier to breath, this problem spans across 48 hours. You don't have 
 
 # RNHW
 
-You took the role to develop a React Native app which has the following features:
+You took the role to develop a React Native app which has the following REQUIRED features:
 
 - Show a list of countries
 
@@ -28,3 +28,13 @@ You took the role to develop a React Native app which has the following features
 - When user taps on a country on the continent screen, show the country screen again
 - When user visits [rnhw://country/:code](rnhw://country/:code), show country screen
 - When user visits [rnhw://continent/:code](rnhw://continent/:code), show continent screen.
+
+There are some expectation you should be known:
+
+- Deeplinks should work well in killed state and background state
+- You should use state management in your project for neccessary state
+- You should use typescript
+- App should have the best performance and handle all the errors
+- Your code should be clean, we will look them carefully
+
+DO THE BEST THING TO HAVE THE BEST RESULT!!!

@@ -1,17 +1,16 @@
 import React, {useState} from 'react';
-import {View, useColorScheme, StatusBar, StyleSheet} from 'react-native';
+import {useColorScheme, StatusBar, StyleSheet} from 'react-native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
-import {NavigationContainer} from '@react-navigation/native';
+import {
+  SafeAreaProvider,
+  initialWindowMetrics,
+} from 'react-native-safe-area-context';
 //
+import {Buttons} from '@components';
 import {AppThemeContext} from '@types';
 import {ThemeProvider} from '@contexts';
-import {
-  DarkTheme,
-  LightTheme,
-  NavigationDarkTheme,
-  NavigationLightTheme,
-} from '@themes';
-import {Buttons} from '@components';
+import {MainNavigation} from '@screens';
+import {DarkTheme, LightTheme} from '@themes';
 
 const styles = StyleSheet.create({
   floating: {
@@ -50,16 +49,8 @@ const App: React.FC = () => {
         barStyle={appTheme.scheme === 'dark' ? 'light-content' : 'dark-content'}
       />
       <ThemeProvider value={appTheme}>
-        <NavigationContainer
-          theme={
-            appTheme.scheme === 'dark'
-              ? NavigationDarkTheme
-              : NavigationLightTheme
-          }
-        >
-          <View
-            style={{backgroundColor: appTheme.colors.background, flex: 1}}
-          />
+        <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+          <MainNavigation />
           <Buttons.RsPressable
             onPress={toggleAppTheme}
             style={[
@@ -67,7 +58,7 @@ const App: React.FC = () => {
               {backgroundColor: appTheme.colors.floating},
             ]}
           />
-        </NavigationContainer>
+        </SafeAreaProvider>
       </ThemeProvider>
     </GestureHandlerRootView>
   );

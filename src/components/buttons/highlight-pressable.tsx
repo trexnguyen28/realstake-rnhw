@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
 });
 
 interface HighlightPressableProps extends RsPressableProps {
-  title: string;
+  title?: string;
 }
 
 const HighlightPressable: React.FC<HighlightPressableProps> = ({
@@ -24,7 +24,9 @@ const HighlightPressable: React.FC<HighlightPressableProps> = ({
 
   return (
     <Pressable {...restProps}>
-      <Text style={[styles.title, {color: colors.highlight}]}>{title}</Text>
+      <Text style={[styles.title, {color: colors.highlight}]}>
+        {title || '-'}
+      </Text>
     </Pressable>
   );
 };

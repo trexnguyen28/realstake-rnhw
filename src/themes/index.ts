@@ -1,2 +1,4 @@
 export * from './font-styles';
-export * from './colors';
+//
+export * from './dark-theme';
+export * from './light-theme';

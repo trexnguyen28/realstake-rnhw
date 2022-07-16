@@ -1,2 +1,3 @@
-export * from './CoreWebView';
-export * from './SearchHeader';
+import * as Buttons from './buttons';
+
+export {Buttons};

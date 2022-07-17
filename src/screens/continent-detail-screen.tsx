@@ -1,5 +1,5 @@
 import React, {useEffect, useRef} from 'react';
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {Alert, FlatList, StyleSheet, Text, View} from 'react-native';
 import {StackScreenProps} from '@react-navigation/stack';
 import {observer} from 'mobx-react-lite';
 import {fontStyles} from '@themes';
@@ -11,7 +11,6 @@ import {ContinentDetailViewModel} from './view-model';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 24,
   },
   title: {
     ...fontStyles.Title,
@@ -56,6 +55,14 @@ const ContinentDetailScreen: React.FC<ContinentDetailScreenProps> = ({
   const initLoadFunc = () => {
     loader({
       loadFunc: () => continentVM.loadContinent(),
+      onSuccess: (data: any) => {
+        if (!data) {
+          Alert.alert(
+            'Invalid continent code',
+            'Please check your continent code again!!',
+          );
+        }
+      },
     }).catch();
   };
 
@@ -68,8 +75,9 @@ const ContinentDetailScreen: React.FC<ContinentDetailScreenProps> = ({
   };
 
   useEffect(() => {
+    continentVM.setCode(code);
     initLoadFunc();
-  }, []);
+  }, [code]);
 
   return (
     <View style={styles.container}>
@@ -80,12 +88,15 @@ const ContinentDetailScreen: React.FC<ContinentDetailScreenProps> = ({
         keyExtractor={item => item.code}
         ListHeaderComponent={() => {
           return (
-            <View>
+            <View style={{paddingTop: 24}}>
               <Text style={[styles.title, {color: colors.title}]}>
                 {continentVM.continent?.name || '-'}
               </Text>
               <View style={styles.content}>
-                <RowItem title={'code'} description={continentVM.code} />
+                <RowItem
+                  title={'code'}
+                  description={continentVM.continent?.code}
+                />
               </View>
             </View>
           );

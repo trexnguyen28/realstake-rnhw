@@ -1,5 +1,5 @@
 import React, {useEffect, useRef} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Alert, StyleSheet, Text, View} from 'react-native';
 import {observer} from 'mobx-react-lite';
 import {useAppTheme, useLoader} from '@hooks';
 import {NavigationParams} from '@types';
@@ -61,6 +61,14 @@ const CountryDetailScreen: React.FC<CountryDetailScreenProps> = ({
   const initLoadFunc = () => {
     loader({
       loadFunc: () => countryVM.loadCountry(),
+      onSuccess: (data: any) => {
+        if (!data) {
+          Alert.alert(
+            'Invalid country code',
+            'Please check your country code again!!',
+          );
+        }
+      },
     }).catch();
   };
 

@@ -17,12 +17,14 @@ class CountryDetailViewModel {
       setCode: action,
     });
     //
-    this.code = code;
+    this.code = code?.toUpperCase() || '';
     this.country = countryStore.getCounty(code);
   }
 
   setCode(code: string) {
-    this.code = code;
+    if (code) {
+      this.code = code?.toUpperCase() || '';
+    }
   }
 
   get phone() {

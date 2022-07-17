@@ -1,4 +1,4 @@
-import {observable, makeObservable, runInAction, computed} from 'mobx';
+import {observable, makeObservable, runInAction, computed, action} from 'mobx';
 import {buildServiceResult, CountryServices} from '@services';
 import {DataModels} from '@types';
 
@@ -11,9 +11,16 @@ class ContinentDetailViewModel {
     makeObservable(this, {
       continent: observable,
       countries: computed,
+      setCode: action,
     });
     //
-    this.code = code;
+    this.code = code?.toUpperCase() || '';
+  }
+
+  setCode(code: string) {
+    if (code) {
+      this.code = code?.toUpperCase() || '';
+    }
   }
 
   get countries() {

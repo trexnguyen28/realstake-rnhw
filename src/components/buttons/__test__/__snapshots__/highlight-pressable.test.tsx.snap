@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Highlight Pressable render render title and event handler correctly 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontSize": 16,
+          "letterSpacing": 0.3,
+          "lineHeight": 20,
+          "textDecorationLine": "underline",
+        },
+        Object {
+          "color": "#0094FF",
+        },
+      ]
+    }
+  >
+    Test 2
+  </Text>
+</View>
+`;
+
+exports[`Highlight Pressable render render title correctly 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontSize": 16,
+          "letterSpacing": 0.3,
+          "lineHeight": 20,
+          "textDecorationLine": "underline",
+        },
+        Object {
+          "color": "#0094FF",
+        },
+      ]
+    }
+  >
+    Test 1
+  </Text>
+</View>
+`;

@@ -1,19 +1,11 @@
-import {Navigation} from 'react-native-navigation';
-import {HomeScreen} from '~/HomeScreen';
+/**
+ * @format
+ */
+import 'react-native-gesture-handler';
 
-Navigation.registerComponent('HomeScreen', () => HomeScreen);
-Navigation.events().registerAppLaunchedListener(() => {
-  Navigation.setRoot({
-    root: {
-      stack: {
-        children: [
-          {
-            component: {
-              name: 'HomeScreen',
-            },
-          },
-        ],
-      },
-    },
-  });
-});
+import {AppRegistry} from 'react-native';
+import {name as appName} from './app.json';
+//
+import {App} from './src/App';
+
+AppRegistry.registerComponent(appName, () => App);

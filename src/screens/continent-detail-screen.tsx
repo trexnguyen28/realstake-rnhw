@@ -52,6 +52,17 @@ const ContinentDetailScreen: React.FC<ContinentDetailScreenProps> = ({
   const {colors} = useAppTheme();
   const {loader} = useLoader();
 
+  const onInvalidContinentCode = () => {
+    if (navigation.canGoBack()) {
+      navigation.goBack();
+    } else {
+      navigation.reset({
+        index: 0,
+        routes: [{name: NavigationParams.MainRoutes.countries}],
+      });
+    }
+  };
+
   const initLoadFunc = () => {
     loader({
       loadFunc: () => continentVM.loadContinent(),
@@ -60,6 +71,7 @@ const ContinentDetailScreen: React.FC<ContinentDetailScreenProps> = ({
           Alert.alert(
             'Invalid continent code',
             'Please check your continent code again!!',
+            [{text: 'OK', onPress: onInvalidContinentCode}],
           );
         }
       },

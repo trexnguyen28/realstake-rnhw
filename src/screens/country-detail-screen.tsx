@@ -57,6 +57,17 @@ const CountryDetailScreen: React.FC<CountryDetailScreenProps> = ({
   ).current;
   const {colors} = useAppTheme();
   const {loader} = useLoader();
+  //
+  const onInvalidCountryCode = () => {
+    if (navigation.canGoBack()) {
+      navigation.goBack();
+    } else {
+      navigation.reset({
+        index: 0,
+        routes: [{name: NavigationParams.MainRoutes.countries}],
+      });
+    }
+  };
 
   const initLoadFunc = () => {
     loader({
@@ -66,6 +77,7 @@ const CountryDetailScreen: React.FC<CountryDetailScreenProps> = ({
           Alert.alert(
             'Invalid country code',
             'Please check your country code again!!',
+            [{text: 'OK', onPress: onInvalidCountryCode}],
           );
         }
       },

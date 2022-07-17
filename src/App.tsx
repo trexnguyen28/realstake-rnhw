@@ -46,6 +46,8 @@ const App: React.FC = () => {
   return (
     <GestureHandlerRootView style={{flex: 1}}>
       <StatusBar
+        translucent
+        backgroundColor={appTheme.colors.card}
         barStyle={appTheme.scheme === 'dark' ? 'light-content' : 'dark-content'}
       />
       <ThemeProvider value={appTheme}>

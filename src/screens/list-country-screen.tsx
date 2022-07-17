@@ -4,8 +4,9 @@ import {StackScreenProps} from '@react-navigation/stack';
 import {observer} from 'mobx-react-lite';
 import {useLoader} from '@hooks';
 import {countryStore} from '@models';
-import {NavigationParams} from '@types';
+import {DataModels, NavigationParams} from '@types';
 import {CountryListItem} from './components';
+import {Layouts} from '@components';
 
 interface ListCountryScreenProps
   extends StackScreenProps<
@@ -28,6 +29,10 @@ const ListCountryScreen: React.FC<ListCountryScreenProps> = ({navigation}) => {
     }
   };
 
+  const renderItem = ({item}: {item: DataModels.Country}) => (
+    <CountryListItem item={item} onPress={onCountryPressed} />
+  );
+
   useEffect(() => {
     initLoadFunc();
   }, []);
@@ -41,13 +46,10 @@ const ListCountryScreen: React.FC<ListCountryScreenProps> = ({navigation}) => {
         data={countryStore.countries}
         updateCellsBatchingPeriod={250}
         keyExtractor={item => item.code}
-        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{paddingTop: 12}}
         contentInsetAdjustmentBehavior={'automatic'}
-        ListHeaderComponent={() => <View style={{height: 12}} />}
-        ItemSeparatorComponent={() => <View style={{height: 12}} />}
-        renderItem={({item}) => (
-          <CountryListItem item={item} onPress={onCountryPressed} />
-        )}
+        ItemSeparatorComponent={() => <Layouts.VSpace value={12} />}
+        renderItem={renderItem}
       />
     </View>
   );

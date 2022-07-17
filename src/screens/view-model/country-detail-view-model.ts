@@ -1,4 +1,4 @@
-import {observable, makeObservable, runInAction, computed} from 'mobx';
+import {observable, makeObservable, runInAction, computed, action} from 'mobx';
 import {buildServiceResult, CountryServices} from '@services';
 import {DataModels} from '@types';
 import {countryStore} from '@models';
@@ -13,18 +13,33 @@ class CountryDetailViewModel {
       country: observable,
       phone: computed,
       continentName: computed,
+      continentCode: computed,
+      setCode: action,
     });
     //
     this.code = code;
     this.country = countryStore.getCounty(code);
   }
 
+  setCode(code: string) {
+    this.code = code;
+  }
+
   get phone() {
-    return this.country?.phone ? `+${this.country?.phone}` : '-';
+    return this.country?.phone
+      ? this.country.phone
+          .split(',')
+          .map(x => `+${x}`)
+          .join(', ')
+      : '-';
   }
 
   get continentName() {
     return this.country?.continent?.name || '-';
+  }
+
+  get continentCode() {
+    return this.country?.continent?.code;
   }
 
   async loadCountry() {

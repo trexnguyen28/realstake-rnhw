@@ -1,11 +1,11 @@
 import React, {useEffect} from 'react';
 import {FlatList, View} from 'react-native';
+import {StackScreenProps} from '@react-navigation/stack';
 import {observer} from 'mobx-react-lite';
 import {useLoader} from '@hooks';
 import {countryStore} from '@models';
-import {CountryListItem} from './components';
-import {StackScreenProps} from '@react-navigation/stack';
 import {NavigationParams} from '@types';
+import {CountryListItem} from './components';
 
 interface ListCountryScreenProps
   extends StackScreenProps<
@@ -23,7 +23,9 @@ const ListCountryScreen: React.FC<ListCountryScreenProps> = ({navigation}) => {
   };
 
   const onCountryPressed = (code: string) => {
-    navigation.navigate(NavigationParams.MainRoutes.country, {code});
+    if (code) {
+      navigation.navigate(NavigationParams.MainRoutes.country, {code});
+    }
   };
 
   useEffect(() => {

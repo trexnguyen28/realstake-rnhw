@@ -8,6 +8,7 @@ import {NavigationDarkTheme, NavigationLightTheme} from '@themes';
 //
 import {ListCountryScreen} from './list-country-screen';
 import {CountryDetailScreen} from './country-detail-screen';
+import {ContinentDetailScreen} from './continent-detail-screen';
 
 const MainStack = createStackNavigator<NavigationParams.MainStackParamList>();
 
@@ -18,7 +19,7 @@ const MainNavigation = () => {
     <NavigationContainer
       theme={scheme === 'dark' ? NavigationDarkTheme : NavigationLightTheme}
     >
-      <MainStack.Navigator>
+      <MainStack.Navigator screenOptions={{headerBackTitleVisible: false}}>
         <MainStack.Screen
           name={NavigationParams.MainRoutes.countries}
           options={{title: 'List of Countries'}}
@@ -28,6 +29,11 @@ const MainNavigation = () => {
           name={NavigationParams.MainRoutes.country}
           options={{title: 'Country Detail'}}
           component={CountryDetailScreen}
+        />
+        <MainStack.Screen
+          name={NavigationParams.MainRoutes.continent}
+          options={{title: 'Continent Detail'}}
+          component={ContinentDetailScreen}
         />
       </MainStack.Navigator>
     </NavigationContainer>

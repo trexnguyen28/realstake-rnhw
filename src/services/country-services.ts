@@ -49,7 +49,10 @@ const queryContinent = async (code: string) => {
     continent(code: $code) {
       code
       name
-      countries
+      countries {
+        code
+        name
+      }
     }
   }`,
     {code},

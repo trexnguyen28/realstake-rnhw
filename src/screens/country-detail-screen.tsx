@@ -46,7 +46,10 @@ interface CountryDetailScreenProps
     NavigationParams.MainRoutes.country
   > {}
 
-const CountryDetailScreen: React.FC<CountryDetailScreenProps> = ({route}) => {
+const CountryDetailScreen: React.FC<CountryDetailScreenProps> = ({
+  route,
+  navigation,
+}) => {
   const {code = ''} = route.params;
   //
   const countryVM = useRef<CountryDetailViewModel>(
@@ -61,9 +64,18 @@ const CountryDetailScreen: React.FC<CountryDetailScreenProps> = ({route}) => {
     }).catch();
   };
 
+  const onContinentPressed = () => {
+    if (countryVM.continentCode) {
+      navigation.navigate(NavigationParams.MainRoutes.continent, {
+        code: countryVM.continentCode,
+      });
+    }
+  };
+
   useEffect(() => {
+    countryVM.setCode(code);
     initLoadFunc();
-  }, []);
+  }, [code]);
 
   return (
     <View style={styles.container}>
@@ -77,7 +89,7 @@ const CountryDetailScreen: React.FC<CountryDetailScreenProps> = ({route}) => {
         <RowItem
           title={'continent'}
           description={countryVM.continentName}
-          onHighlightPressed={() => {}}
+          onHighlightPressed={onContinentPressed}
         />
       </View>
     </View>

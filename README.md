@@ -1,40 +1,33 @@
-## How to work on this mini-project?
+# RNHW - Infina.vn
 
-- Clone this repository to your local machine
-- Create a repository on your GitHub account and submit the solution there when you're done.
-- Send us the URL to your repository via email and we'll contact you with the feedbacks.
+This repo tries to resolve some problems that have been described at: [RealStake/rnhw](https://github.com/RealStake/rnhw)
+## Features checklist
 
-**The API data is at https://countries.trevorblades.com/**.
+- [x] Show a list of countries.
+- [x] When user taps on a country, show country screen.
+- [x] When user taps on a continent, show continent screen with a list of countries of the continent.
+- [x] App should have a floating button throughout screens to switch between light and dark mode.
+- [x] When user taps on a country on the continent screen, show the country screen again.
+- [x] When user visits rnhw://country/:code, show country screen (both killed / background state).
+- [x] When user visits rnhw://continent/:code, show continent screen (both killed / background state).
+- [x] State management with Mobx.
+- [x] Fully written by TypeScript.
+- [x] Should have the best performance (smoothly rendering) -  handle all the errors. (Network, deep link, others, ...)
+- [x] Unit testing.
+- [x] Code should be clean - Clean structural project - seperation of concern. - MVVM approach.
 
-To make it easier to breath, this problem spans across 48 hours. You don't have to make it 100% the same to the images, only the idea. We hope to receive your work in its best shape. Please do not hesitate to ask for more information if necessary.
+## How to start the app
 
-# RNHW
+1. `yarn install`
+2. `cd ios && pod install`
+3. At the root folder: `yarn ios` or `yarn android`
 
-You took the role to develop a React Native app which has the following REQUIRED features:
+## How to run unit testing
 
-- Show a list of countries
+`yarn test`
 
-<img src="problem/1.png" width="300" />
+## Caveat
 
-- When user taps on a country, show country screen
-
-<img src="problem/2.png" width="300" />
-
-- When user taps on a continent, show continent screen with a list of countries of the continent
-
-<img src="problem/3.png" width="300" />
-
-- App should have a floating button throughout screens to switch between light and dark mode.
-- When user taps on a country on the continent screen, show the country screen again
-- When user visits [rnhw://country/:code](rnhw://country/:code), show country screen
-- When user visits [rnhw://continent/:code](rnhw://continent/:code), show continent screen.
-
-There are some expectation you should be known:
-
-- Deeplinks should work well in killed state and background state
-- You should use state management in your project for neccessary state
-- You should use typescript
-- App should have the best performance and handle all the errors
-- Your code should be clean, we will look them carefully
-
-DO THE BEST THING TO HAVE THE BEST RESULT!!!
+- I already upgraded react native to version **0.68.2** which I think is suitable for app performance and it got fully featured support by the community.
+- I use **react-navigation** as the primary navigation system for the app instead of *react-native-navigation* because I got more familiar with this and it is more simplistic, and more trendy with RN community which you can check at npm trend.
+- I use **StyleSheet** as the primary styling/theming system for the app instead of *styled-component* because this is the default system from React Native and got recommended by the community.
